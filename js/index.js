@@ -461,7 +461,7 @@ async function checkBalanceRPC(userAddress) {
         visibleData.forEach(item => {
             const itemEl = document.createElement('div');
             itemEl.classList.add('buyback-item');
-            itemEl.innerHTML = `Treasury used <img src="img/pls.png" width="20px" height="20px"><strong>${Math.round(item.x1).toLocaleString()}PLS</strong> to buy-back <img src="favicon/favicon-32x32.png" width="20px" height="20px"><strong>${Math.round(item.x2).toLocaleString()}OINK</strong> <span style="cursor: pointer;" onclick="window.open('`+blockExplorerUrl + `/tx/` + item.txHash +`', '_blank');"><small>(${item.timeAgo})</small></span>`;
+            itemEl.innerHTML = `Treasury used <img src="img/pls.png" width="20px" height="20px"><strong>${Math.round(item.x1).toLocaleString()} PLS</strong> to buy-back <img src="favicon/favicon-32x32.png" width="20px" height="20px"><strong>${Math.round(item.x2).toLocaleString()} OINK</strong> <span style="cursor: pointer;" onclick="window.open('`+blockExplorerUrl + `/tx/` + item.txHash +`', '_blank');"><small>(${item.timeAgo})</small></span>`;
             this.container.appendChild(itemEl);
         });
 
