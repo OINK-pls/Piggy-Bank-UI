@@ -560,7 +560,7 @@ class TreasuryInflows {
                 icon = '<img src="img/inc.png" width="20px" height="20px">';
                 ticker = "INC";
             } else if (item.token.toLowerCase() == "0xFAaC6a85C3e123AB2CF7669B1024f146cFef0b38".toLowerCase()) {
-                icon = '<img src="img/xpd.png" width="20px" height="20px">';
+                icon = '<img src="favicon/favicon-32x32.png" width="20px" height="20px">';
                 ticker = "OINK";
             } else if (item.token.toLowerCase() == "0x6b175474e89094c44da98b954eedeac495271d0f".toLowerCase()) {
                 icon = '<img src="img/pdai.png" width="20px" height="20px">';
