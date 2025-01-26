@@ -30780,12 +30780,12 @@ body {
 .card-body:before, .card-body:after {
 	content: '';
 	position: absolute;
-	left: -2px;
-	top: -2px;
+	left: -4px;
+	top: -4px;
 	background: linear-gradient(45deg, #6233FB, #1AA1FB, #DD1AE3, #4147FF, #F2094B, #A025EF, #277FFD, #EC1096, #04D8FE);
 	background-size: 400%;
-	width: calc(100% + 4px);
-	height: calc(100% + 4px);
+	width: calc(100% + 8px);
+	height: calc(100% + 8px);
 	z-index: -1;
 	animation: steam 120s linear infinite;
 }
@@ -30820,12 +30820,12 @@ body {
 .block:before, .block:after {
     content: '';
 	position: absolute;
-	left: -2px;
-	top: -2px;
+	left: -4px;
+	top: -4px;
 	background: linear-gradient(45deg, #6233FB, #1AA1FB, #DD1AE3, #4147FF, #F2094B, #A025EF, #277FFD, #EC1096, #04D8FE);
 	background-size: 400%;
-	width: calc(100% + 4px);
-	height: calc(100% + 4px);
+	width: calc(100% + 8px);
+	height: calc(100% + 8px);
 	z-index: -1;
 	animation: steam 120s linear infinite;
 }
