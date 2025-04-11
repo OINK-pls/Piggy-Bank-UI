@@ -8,7 +8,7 @@ async function showOffering() {
 
     let swalio = Swal.fire({
         title: '<strong>Buy '+projectName+' ('+tokenTicker+') Tokens</strong>',
-        html: '<img src="img/pulse-dao.png" style="max-width: 150px"></br></br><div id="replace">'+'</strong> <strong>Buy With:</strong><select class="swal2-select" style="display: flex;" name="spendToken" id="spendToken">   <option value="PLS">PulseChain (PLS)</option><option value="PLSX">PulseX (PLSX)</option><option value="INC">Incentive (INC)</option><option value="HEX">HEX</option></select></br><strong>Choose Discount:</strong><select class="swal2-select" style="display: flex;" name="discount" id="discount">   <option value="0">5 Year Miner (<strong>25%</strong> discount)</option><option value="1">3 Year Miner (<strong>15%</strong> discount)</option><option value="2">1 Year Miner (<strong>10%</strong> discount)</option><option value="3">Into Wallet (<strong>no</strong> discount)</option></select><strong>Tokens to Spend</strong></br><input id="spendAmount" autocapitalize="off" class="swal2-input" placeholder="" type="text" style="display: flex; max-width: 150px;" value="10000000">   <div id="displayingCustom" style="display: none;"><small>Gift a stake to another wallet</br> Mandatory Serve is an optional period of days during which stake can not be withdrawn under any circumstances(no emergency end possible)</small> </div>'+'</div>',
+        html: '<img src="img/pulse-dao.png" style="max-width: 150px"></br></br><div id="replace">'+'</strong> <strong>Buy With:</strong><select class="swal2-select" style="display: flex;" name="spendToken" id="spendToken">   <option value="PLS">PulseChain (PLS)</option><option value="PLSX">PulseX (PLSX)</option><option value="INC">Incentive (INC)</option><option value="HEX">HEX</option></select></br><strong>Choose Discount:</strong><select class="swal2-select" style="display: flex;" name="discount" id="discount">   <option value="0">5 Year Miner (<strong>20%</strong> discount)</option><option value="1">3 Year Miner (<strong>15%</strong> discount)</option><option value="2">1 Year Miner (<strong>10%</strong> discount)</option><option value="3">Into Wallet (<strong>no</strong> discount)</option></select><strong>Tokens to Spend</strong></br><input id="spendAmount" autocapitalize="off" class="swal2-input" placeholder="" type="text" style="display: flex; max-width: 150px;" value="10000000">   <div id="displayingCustom" style="display: none;"><small>Gift a stake to another wallet</br> Mandatory Serve is an optional period of days during which stake can not be withdrawn under any circumstances(no emergency end possible)</small> </div>'+'</div>',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
@@ -31,7 +31,7 @@ async function showOffering() {
 				let estimateReceive
 				
 				if(discountOption == 0) {
-					receiveOption = "</br><strong>Your Discount: 25%</strong></br></br><small>You will receive the OINK tokens in a form of a miner locked for 5 years.</small>"
+					receiveOption = "</br><strong>Your Discount: 20%</strong></br></br><small>You will receive the OINK tokens in a form of a miner locked for 5 years.</small>"
 					poolAddress = "0xf3E82f4123d4262a2baEC25b03652f3932A91739"
 				} else if(discountOption == 1) {
 					receiveOption = "</br><strong>Your Discount: 15%</strong></br></br><small>You will receive the OINK tokens in a form of a miner locked for 3 years.</small>"
