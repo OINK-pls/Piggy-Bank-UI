@@ -1,5 +1,5 @@
-  		ABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"buyer","type":"address"},{"indexed":false,"internalType":"address","name":"pool","type":"address"},{"indexed":false,"internalType":"uint256","name":"depositAmount","type":"uint256"},{"indexed":false,"internalType":"address","name":"purchaseToken","type":"address"}],"name":"BUY","type":"event"},{"inputs":[],"name":"DTX","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"INC","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"INC_PLS_PAIR","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"OINK_PLS_PAIR","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PLSX","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PLSX_PLS_PAIR","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_poolInto","type":"address"}],"name":"buyWithINC","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_poolInto","type":"address"}],"name":"buyWithPLS","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_poolInto","type":"address"}],"name":"buyWithPLSX","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"canWithdraw","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"emergencyWithdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getINCPerPLSPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getOinkPerPLSPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getPLSXPerPLSPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_poolInto","type":"address"}],"name":"getWithINC","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_poolInto","type":"address"}],"name":"getWithPLS","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_poolInto","type":"address"}],"name":"getWithPLSX","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"governor","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"haltProposalStartingId","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minimumPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_poolInto","type":"address"},{"internalType":"uint256","name":"_price","type":"uint256"}],"name":"priceWithDiscount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"treasury","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"votingCreditContract","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"wPLS","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_a","type":"address"}],"name":"withdrawERC","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_token","type":"address"}],"name":"withdrawToken","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdrawalStarted","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"withdrawalStartedCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"withdrawalStartedTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]
-		
+  		ABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"buyer","type":"address"},{"indexed":false,"internalType":"address","name":"pool","type":"address"},{"indexed":false,"internalType":"uint256","name":"oinks","type":"uint256"}],"name":"BUY","type":"event"},{"inputs":[],"name":"DTX","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"HEX","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"HEX_PLS_PAIR","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"INC","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"INC_PLS_PAIR","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"OINK_PLS_PAIR","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PLSX","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"PLSX_PLS_PAIR","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_poolInto","type":"address"}],"name":"buyWithHEX","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_poolInto","type":"address"}],"name":"buyWithINC","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_poolInto","type":"address"}],"name":"buyWithPLS","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_poolInto","type":"address"}],"name":"buyWithPLSX","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"canWithdraw","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"emergencyWithdraw","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"getHEXPerPLSPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getINCPerPLSPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getOinkPerPLSPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getPLSXPerPLSPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_poolInto","type":"address"}],"name":"getWithHEX","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_poolInto","type":"address"}],"name":"getWithINC","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_poolInto","type":"address"}],"name":"getWithPLS","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"},{"internalType":"address","name":"_poolInto","type":"address"}],"name":"getWithPLSX","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"governor","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"haltProposalStartingId","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minimumPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_poolInto","type":"address"},{"internalType":"uint256","name":"_price","type":"uint256"}],"name":"priceWithDiscount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"pure","type":"function"},{"inputs":[],"name":"treasury","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"votingCreditContract","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"wPLS","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_a","type":"address"}],"name":"withdrawERC","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_token","type":"address"}],"name":"withdrawToken","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdrawalStarted","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"withdrawalStartedCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"withdrawalStartedTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]
+
 		 ABIerc20 = [{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"payable":true,"stateMutability":"payable","type":"fallback"},{"anonymous":false,"inputs":[{"indexed":true,"name":"owner","type":"address"},{"indexed":true,"name":"spender","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Transfer","type":"event"}]
 
 
@@ -8,7 +8,7 @@ async function showOffering() {
 
     let swalio = Swal.fire({
         title: '<strong>Buy '+projectName+' ('+tokenTicker+') Tokens</strong>',
-        html: '<img src="img/pulse-dao.png" style="max-width: 150px"></br></br><div id="replace">'+'</strong> <strong>Buy With:</strong><select class="swal2-select" style="display: flex;" name="spendToken" id="spendToken">   <option value="PLS">PulseChain (PLS)</option><option value="PLSX">PulseX (PLSX)</option><option value="INC">Incentive (INC)</option></select></br><strong>Choose Discount:</strong><select class="swal2-select" style="display: flex;" name="discount" id="discount">   <option value="0">5 Year Miner (<strong>25%</strong> discount)</option><option value="1">3 Year Miner (<strong>15%</strong> discount)</option><option value="2">1 Year Miner (<strong>10%</strong> discount)</option><option value="3">Into Wallet (<strong>no</strong> discount)</option></select><strong>Tokens to Spend</strong></br><input id="spendAmount" autocapitalize="off" class="swal2-input" placeholder="" type="text" style="display: flex; max-width: 150px;" value="10000000">   <div id="displayingCustom" style="display: none;"><small>Gift a stake to another wallet</br> Mandatory Serve is an optional period of days during which stake can not be withdrawn under any circumstances(no emergency end possible)</small> </div>'+'</div>',
+        html: '<img src="img/pulse-dao.png" style="max-width: 150px"></br></br><div id="replace">'+'</strong> <strong>Buy With:</strong><select class="swal2-select" style="display: flex;" name="spendToken" id="spendToken">   <option value="PLS">PulseChain (PLS)</option><option value="PLSX">PulseX (PLSX)</option><option value="INC">Incentive (INC)</option></select><option value="HEX">HEX</option></select></br><strong>Choose Discount:</strong><select class="swal2-select" style="display: flex;" name="discount" id="discount">   <option value="0">5 Year Miner (<strong>25%</strong> discount)</option><option value="1">3 Year Miner (<strong>15%</strong> discount)</option><option value="2">1 Year Miner (<strong>10%</strong> discount)</option><option value="3">Into Wallet (<strong>no</strong> discount)</option></select><strong>Tokens to Spend</strong></br><input id="spendAmount" autocapitalize="off" class="swal2-input" placeholder="" type="text" style="display: flex; max-width: 150px;" value="10000000">   <div id="displayingCustom" style="display: none;"><small>Gift a stake to another wallet</br> Mandatory Serve is an optional period of days during which stake can not be withdrawn under any circumstances(no emergency end possible)</small> </div>'+'</div>',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
@@ -60,6 +60,8 @@ async function showOffering() {
 					estimateReceive = await callGetWithPLSX(BigInt(spendAmount)*BigInt(10**18), poolAddress)
 				} else if(spendToken == "INC") {
 					estimateReceive = await callGetWithINC(BigInt(spendAmount)*BigInt(10**18), poolAddress)
+				} else if(spendToken == "HEX") {
+					estimateReceive = await callGetWithHEX(BigInt(spendAmount)*BigInt(10**8), poolAddress)
 				}
 				
 				if(BigInt(estimateReceive) > BigInt(remainingOink)) {
@@ -102,7 +104,7 @@ async function showOffering() {
                   try {
 	
 	if(spendToken == "PLS") {
-					 const transaction = new ethers.Contract("0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299", ABI, provider.getSigner());
+					 const transaction = new ethers.Contract("0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e", ABI, provider.getSigner());
                         const doIt = await transaction.buyWithPLS(BigInt(spendAmount)*BigInt(10**18), poolAddress, {
 							value: BigInt(spendAmount) * BigInt(10**18)
 						});
@@ -112,22 +114,32 @@ async function showOffering() {
 					
 					//give allowance first
 					let transaction = new ethers.Contract("0x95B303987A60C71504D99Aa1b13B4DA07b0790ab", ABIerc20, provider.getSigner());
-					let doIt = await transaction.approve("0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299", BigInt(spendAmount)*BigInt(10**18));
+					let doIt = await transaction.approve("0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e", BigInt(spendAmount)*BigInt(10**18));
 					await doIt.wait();
 					
 					
-					 transaction = new ethers.Contract("0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299", ABI, provider.getSigner());
+					 transaction = new ethers.Contract("0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e", ABI, provider.getSigner());
                          doIt = await transaction.buyWithPLSX(BigInt(spendAmount)*BigInt(10**18), poolAddress);
                         await doIt.wait();
 					
 				} else if(spendToken == "INC") {
 					
 					let transaction = new ethers.Contract("0x2fa878Ab3F87CC1C9737Fc071108F904c0B0C95d", ABIerc20, provider.getSigner());
-					let doIt = await transaction.approve("0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299", BigInt(spendAmount)*BigInt(10**18));
+					let doIt = await transaction.approve("0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e", BigInt(spendAmount)*BigInt(10**18));
 					await doIt.wait();
 					
-					 transaction = new ethers.Contract("0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299", ABI, provider.getSigner());
+					 transaction = new ethers.Contract("0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e", ABI, provider.getSigner());
                          doIt = await transaction.buyWithINC(BigInt(spendAmount)*BigInt(10**18), poolAddress);
+                        await doIt.wait();
+						
+				} else if(spendToken == "HEX") {
+					
+					let transaction = new ethers.Contract("0x2b591e99afE9f32eAA6214f7B7629768c40Eeb39", ABIerc20, provider.getSigner());
+					let doIt = await transaction.approve("0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e", BigInt(spendAmount)*BigInt(10**8));
+					await doIt.wait();
+					
+					 transaction = new ethers.Contract("0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e", ABI, provider.getSigner());
+                         doIt = await transaction.buyWithHEX(BigInt(spendAmount)*BigInt(10**8), poolAddress);
                         await doIt.wait();
 						
 				}
@@ -176,7 +188,7 @@ async function showOffering() {
 
 async function callGetWithPLS(amount, poolAddress) {
 		const RPC_URL = 'https://rpc-pulsechain.g4mm4.io'; // Network 369 RPC URL
-const CONTRACT_ADDRESS = '0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299'; // Replace with your contract address
+const CONTRACT_ADDRESS = '0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e'; // Replace with your contract address
 
 	const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
 
@@ -201,7 +213,7 @@ const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, provider);
 
 async function callGetWithPLSX(amount, poolAddress) {
 		const RPC_URL = 'https://rpc-pulsechain.g4mm4.io'; // Network 369 RPC URL
-const CONTRACT_ADDRESS = '0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299'; // Replace with your contract address
+const CONTRACT_ADDRESS = '0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e'; // Replace with your contract address
 
 	const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
 
@@ -226,7 +238,7 @@ const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, provider);
 
 async function callGetWithINC(amount, poolAddress) {
 	const RPC_URL = 'https://rpc-pulsechain.g4mm4.io'; // Network 369 RPC URL
-const CONTRACT_ADDRESS = '0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299'; // Replace with your contract address
+const CONTRACT_ADDRESS = '0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e'; // Replace with your contract address
 
 
 	const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
@@ -250,12 +262,38 @@ const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, provider);
 
 }
 
+async function callGetWithHEX(amount, poolAddress) {
+	const RPC_URL = 'https://rpc-pulsechain.g4mm4.io'; // Network 369 RPC URL
+const CONTRACT_ADDRESS = '0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e'; // Replace with your contract address
+
+
+	const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
+
+// Initialize contract instance
+const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, provider);
+
+  try {
+    // Convert amount to BigInt if it's a regular number
+    const amountBigInt = BigInt(amount);
+   
+    // Call the contract function
+    const result = await contract.getWithHEX(amountBigInt, poolAddress);
+    
+    console.log('Function Result:', result.toString());
+    return result;
+  } catch (error) {
+    console.error('Error calling getWithPLS:', error);
+    throw error;
+  }
+
+}
+
 getOinkBalance()
 var remainingOink
 
 async function getOinkBalance() {
 	const RPC_URL = 'https://rpc-pulsechain.g4mm4.io'; // Network 369 RPC URL
-const CONTRACT_ADDRESS = '0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299'; // Replace with your contract address
+const CONTRACT_ADDRESS = '0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e'; // Replace with your contract address
 
 
 	const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
