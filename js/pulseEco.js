@@ -82,11 +82,12 @@ var fundingFee
   
   document.getElementById("pdaiVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[7])/10**18)).toLocaleString() + " pDAI</br> <small>Reward Allocation: "+((Number(y[14]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
   
-  document.getElementById("pusdtVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[9])/10**6)).toLocaleString() + " pUSDT</br> <small>Reward Allocation: "+((Number(y[17]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
+  document.getElementById("pusdtVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[9])/10**18)).toLocaleString() + " pUSDT</br> <small>Reward Allocation: "+((Number(y[17]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
   
-  document.getElementById("pusdcVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[10])/10**6)).toLocaleString() + " pUSDC</br> <small>Reward Allocation: "+((Number(y[18]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
+  document.getElementById("pusdcVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[10])/10**18)).toLocaleString() + " pUSDC</br> <small>Reward Allocation: "+((Number(y[18]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
   
   document.getElementById("solidxVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[8])/10**18)).toLocaleString() + " SOLIDX</br> <small>Reward Allocation: "+((Number(y[15]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
+   document.getElementById("pdripVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[11])/10**18)).toLocaleString() + " PDRIP</br> <small>Reward Allocation: "+((Number(y[19]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
   
 	})
    })
@@ -106,6 +107,8 @@ var SOLIDXVault = "0x2057dd1687eafCD809386a41012748AC509df542"
 var PUSDTVault = "0xed1b56c799d28a988bd79bbf2f7e238c2ba15c21"
 var PUSDCVault = "0xf46810ce204a9a85a673ea9bbcc1bf5481ee1328"
 
+var PDRIPVault = "0xc49EF441FFb79108047E4dF812F375A7E48FD3De"
+
 
 var usdcContract = ""
 var plsxContract = "0x95B303987A60C71504D99Aa1b13B4DA07b0790ab"
@@ -119,6 +122,8 @@ var solidxContract = "0x8Da17Db850315A34532108f0f5458fc0401525f6"
 
 var pusdtContract = "0xdAC17F958D2ee523a2206206994597C13D831ec7"
 var pusdcContract = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+
+var pdripContract = "0xeB2CEed77147893Ba8B250c796c2d4EF02a72B68"
 
   async function stakeHEX() {
 	   
@@ -689,6 +694,138 @@ if(balance == 0) {
    }
    
    
+   async function stakePDRIP() {
+	   
+	   await auth();
+	   let accounts = await provider.send("eth_requestAccounts", []);
+			let account = accounts[0];
+			
+	   				let swalio = Swal.fire({
+				  title: 'Mine using PDRIP',
+				  html: '<img src="img/pdrip.png" style="max-width: 64px"></br></br><div id="replace"><div class="pixel-loader"></div></div>',
+				 showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'I understand, Start Mining!'
+				})
+				
+				let balance = await checkBalance2(account, pdripContract);
+				let raw = BigInt(balance[0])
+				balance = balance[1]/100
+				balance = (Number(raw)/Number(10**18))
+				
+				if(balance == 0) {
+					Swal.fire({
+				  title: 'Mine using PDRIP tokens',
+				  html: '<img src="img/pdrip.png" style="max-width: 64px"></br></br> You have no PDRIP tokens in your wallet. Swap on PulseX or choose another token!',
+				 showCancelButton: true,
+			showConfirmButton: false
+				})
+
+				} else {
+				document.getElementById("replace").innerHTML = 'Your Balance:<strong> <div id="userBalance" style="display: inline;">'+balance+'</div> PDRIP</strong></br></br></br>To Stake:  <strong><span id="client2">'+balance+'</span> PDRIP</strong></label><center><input type="range" class="form-control-range" id="formControlRange2" style="max-width:300px;" value="100"></center></br></br>Deposit Fee: '+(depositFee/100)+'%</br>Mining Fee: '+(fundingFee/10000)+'% <small>(hourly)</small></br></br><strong>Your Principal Can be withdrawn at any time.</strong></br></br>Through governance process fees can be turned on and adjusted. Deposit fee is charged only once - upon mining start. Mining Fee is charged perpetually every hour and the fees are deducted from your principal. ';
+									
+			  var delayBE = balance;
+		  
+			const range2 = document.getElementById('formControlRange2');
+			const client2 = document.getElementById('client2');
+
+			range2.addEventListener('change', (d) => {
+			  const clientValue2 = d.target.value;
+			  client2.textContent = (clientValue2 / 100 * delayBE);
+			});
+			
+			
+			swalio.then(async(result) => {
+		  if (result.isConfirmed) {
+			 			Swal.fire({
+				  title: '<strong>Allowance</strong>',
+				  html: '<div id="allowanceCheck"> Checking Allowance....<div class="pixel-loader"></div></div>',
+				  showCancelButton: false,
+				  showConfirmButton: false
+				})
+				
+				let allowance = await checkAllowance(pdripContract, account, PDRIPVault);
+				
+				if(allowance >= (raw * BigInt(range2.value) / BigInt(100))) {
+					finalizeStake(pdripContract, (raw * BigInt(range2.value) / BigInt(100)));
+				} else {
+					document.getElementById("allowanceCheck").innerHTML = 'To proceed you must give allowance in wallet: </br><button class="swal2-confirm swal2-styled" style="display: inline-block;" onclick="giveAllowance(\''+pdripContract+'\', \''+PDRIPVault+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\')"> Allow '+client2.textContent+' PDRIP</button> <button class="swal2-confirm swal2-styled" style="display: inline-block;" onclick="giveAllowance(\''+pdripContract+'\', \''+PDRIPVault+'\', \''+ethers.constants.MaxUint256+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\')""> Give Infinite Allowance</button>';
+				}
+				}})
+				
+				}
+
+   }
+   
+   
+   async function stakePUSDC() {
+	   
+	   await auth();
+	   let accounts = await provider.send("eth_requestAccounts", []);
+			let account = accounts[0];
+			
+	   				let swalio = Swal.fire({
+				  title: 'Mine using pUSDC',
+				  html: '<img src="img/pusdc.png" style="max-width: 64px"></br></br><div id="replace"><div class="pixel-loader"></div></div>',
+				 showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'I understand, Start Mining!'
+				})
+				
+				let balance = await checkBalance2(account, pusdcContract);
+				let raw = BigInt(balance[0])
+				balance = balance[1]/100
+				balance = (Number(raw)/Number(10**6))
+				
+				if(balance == 0) {
+					Swal.fire({
+				  title: 'Mine using pUSDC tokens',
+				  html: '<img src="img/pusdc.png" style="max-width: 64px"></br></br> You have no pUSDC tokens in your wallet. Swap on PulseX or choose another token!',
+				 showCancelButton: true,
+			showConfirmButton: false
+				})
+
+				} else {
+				document.getElementById("replace").innerHTML = 'Your Balance:<strong> <div id="userBalance" style="display: inline;">'+balance+'</div> pUSDC</strong></br></br></br>To Stake:  <strong><span id="client2">'+balance+'</span> pUSDC</strong></label><center><input type="range" class="form-control-range" id="formControlRange2" style="max-width:300px;" value="100"></center></br></br>Deposit Fee: '+(depositFee/100)+'%</br>Mining Fee: '+(fundingFee/10000)+'% <small>(hourly)</small></br></br><strong>Your Principal Can be withdrawn at any time.</strong></br></br>Through governance process fees can be turned on and adjusted. Deposit fee is charged only once - upon mining start. Mining Fee is charged perpetually every hour and the fees are deducted from your principal. ';
+									
+			  var delayBE = balance;
+		  
+			const range2 = document.getElementById('formControlRange2');
+			const client2 = document.getElementById('client2');
+
+			range2.addEventListener('change', (d) => {
+			  const clientValue2 = d.target.value;
+			  client2.textContent = (clientValue2 / 100 * delayBE);
+			});
+			
+			
+			swalio.then(async(result) => {
+		  if (result.isConfirmed) {
+			 			Swal.fire({
+				  title: '<strong>Allowance</strong>',
+				  html: '<div id="allowanceCheck"> Checking Allowance....<div class="pixel-loader"></div></div>',
+				  showCancelButton: false,
+				  showConfirmButton: false
+				})
+				
+				let allowance = await checkAllowance(pusdcContract, account, PUSDCVault);
+				
+				if(allowance >= (raw * BigInt(range2.value) / BigInt(100))) {
+					finalizeStake(pusdcContract, (raw * BigInt(range2.value) / BigInt(100)));
+				} else {
+					document.getElementById("allowanceCheck").innerHTML = 'To proceed you must give allowance in wallet: </br><button class="swal2-confirm swal2-styled" style="display: inline-block;" onclick="giveAllowance(\''+pusdcContract+'\', \''+PUSDCVault+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\')"> Allow '+client2.textContent+' pDAI</button> <button class="swal2-confirm swal2-styled" style="display: inline-block;" onclick="giveAllowance(\''+pusdcContract+'\', \''+PUSDCVault+'\', \''+ethers.constants.MaxUint256+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\')""> Give Infinite Allowance</button>';
+				}
+				}})
+				
+				}
+
+   }
+   
+
+   
+   
    async function stakeSOLIDX() {
 	   
 	   await auth();
@@ -941,6 +1078,8 @@ if(balance == 0) {
 				vault = PUSDTVault;
 			}   else if(tokenAddress == pusdcContract) {
 				vault = PUSDCVault;
+			}   else if(tokenAddress == pdripContract) {
+				vault = PDRIPVault;
 			}
 	
 						 			Swal.fire({
