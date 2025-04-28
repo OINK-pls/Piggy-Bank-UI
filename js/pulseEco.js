@@ -82,9 +82,9 @@ var fundingFee
   
   document.getElementById("pdaiVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[7])/10**18)).toLocaleString() + " pDAI</br> <small>Reward Allocation: "+((Number(y[14]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
   
-  document.getElementById("pusdtVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[9])/10**18)).toLocaleString() + " pUSDT</br> <small>Reward Allocation: "+((Number(y[17]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
+  document.getElementById("pusdtVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[9])/10**6)).toLocaleString() + " pUSDT</br> <small>Reward Allocation: "+((Number(y[17]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
   
-  document.getElementById("pusdcVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[10])/10**18)).toLocaleString() + " pUSDC</br> <small>Reward Allocation: "+((Number(y[18]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
+  document.getElementById("pusdcVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[10])/10**6)).toLocaleString() + " pUSDC</br> <small>Reward Allocation: "+((Number(y[18]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
   
   document.getElementById("solidxVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[8])/10**18)).toLocaleString() + " SOLIDX</br> <small>Reward Allocation: "+((Number(y[15]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
    document.getElementById("pdripVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[11])/10**18)).toLocaleString() + " PDRIP</br> <small>Reward Allocation: "+((Number(y[19]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
