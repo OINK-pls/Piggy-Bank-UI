@@ -72,7 +72,7 @@ var fundingFee
 			
 			let total = Number(y[6]) + Number(y[7]) + Number(y[8]) + Number(y[9]) + Number(y[10]) + Number(y[11]) + Number(y[12]) + Number(y[13]) + Number(y[14]) + Number(y[15]) + Number(y[17]) + Number(y[18])
 		console.log("total is " + total)
-		document.getElementById("tshareVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[4])/10**8)).toLocaleString() + " T-shares</br> <small>Reward Allocation: "+((Number(y[10]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
+		document.getElementById("tshareVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[4])/10**12)).toLocaleString() + " T-shares</br> <small>Reward Allocation: "+((Number(y[10]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
 			document.getElementById("plsxVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[1])/10**18)).toLocaleString() + " PLSX</br> <small>Reward Allocation: "+((Number(y[7]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
    	document.getElementById("plsVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[0])/10**18)).toLocaleString() + " PLS</br> <small>Reward Allocation: "+((Number(y[6]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
    	document.getElementById("incVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[2])/10**18)).toLocaleString() + " INC</br> <small>Reward Allocation: "+((Number(y[8]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
