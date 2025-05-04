@@ -72,23 +72,24 @@ var fundingFee
 			
 			let total = Number(y[6]) + Number(y[7]) + Number(y[8]) + Number(y[9]) + Number(y[10]) + Number(y[11]) + Number(y[12]) + Number(y[13]) + Number(y[14]) + Number(y[15]) + Number(y[17]) + Number(y[18])
 		console.log("total is " + total)
-		document.getElementById("tshareVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[4])/10**12)).toLocaleString() + " T-shares</br> <small>Reward Allocation: "+((Number(y[10]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
-			document.getElementById("plsxVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[1])/10**18)).toLocaleString() + " PLSX</br> <small>Reward Allocation: "+((Number(y[7]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
-   	document.getElementById("plsVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[0])/10**18)).toLocaleString() + " PLS</br> <small>Reward Allocation: "+((Number(y[6]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
-   	document.getElementById("incVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[2])/10**18)).toLocaleString() + " INC</br> <small>Reward Allocation: "+((Number(y[8]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
-   	document.getElementById("hexVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[3])/10**8)).toLocaleString() + " HEX</br> <small>Reward Allocation: "+((Number(y[9]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
-    	document.getElementById("hoaVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[5])/10**18)).toLocaleString() + " HOA</br> <small>Reward Allocation: "+((Number(y[12]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
-  document.getElementById("atropaVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[6])/10**18)).toLocaleString() + " ATROPA</br> <small>Reward Allocation: "+((Number(y[13]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
-  
-  document.getElementById("pdaiVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[7])/10**18)).toLocaleString() + " pDAI</br> <small>Reward Allocation: "+((Number(y[14]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
-  
-  document.getElementById("pusdtVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[9])/10**6)).toLocaleString() + " pUSDT</br> <small>Reward Allocation: "+((Number(y[17]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
-  
-  document.getElementById("pusdcVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[10])/10**6)).toLocaleString() + " pUSDC</br> <small>Reward Allocation: "+((Number(y[18]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
-  
-  document.getElementById("solidxVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[8])/10**18)).toLocaleString() + " SOLIDX</br> <small>Reward Allocation: "+((Number(y[15]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
-   document.getElementById("pdripVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[11])/10**18)).toLocaleString() + " PDRIP</br> <small>Reward Allocation: "+((Number(y[19]))/total*100).toFixed(1)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>"
-  
+// Helper function to format reward allocation
+function formatRewardAllocation(value, total) {
+    const percentage = (Number(value) / total * 100);
+    return percentage < 1 ? "< 1" : Math.round(percentage).toString();
+}
+
+document.getElementById("tshareVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[4])/10**12)).toLocaleString() + " T-shares</br> <small>Reward Allocation: "+formatRewardAllocation(y[10], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("plsxVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[1])/10**18)).toLocaleString() + " PLSX</br> <small>Reward Allocation: "+formatRewardAllocation(y[7], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("plsVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[0])/10**18)).toLocaleString() + " PLS</br> <small>Reward Allocation: "+formatRewardAllocation(y[6], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("incVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[2])/10**18)).toLocaleString() + " INC</br> <small>Reward Allocation: "+formatRewardAllocation(y[8], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("hexVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[3])/10**8)).toLocaleString() + " HEX</br> <small>Reward Allocation: "+formatRewardAllocation(y[9], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("hoaVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[5])/10**18)).toLocaleString() + " HOA</br> <small>Reward Allocation: "+formatRewardAllocation(y[12], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("atropaVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[6])/10**18)).toLocaleString() + " ATROPA</br> <small>Reward Allocation: "+formatRewardAllocation(y[13], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("pdaiVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[7])/10**18)).toLocaleString() + " pDAI</br> <small>Reward Allocation: "+formatRewardAllocation(y[14], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("pusdtVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[9])/10**6)).toLocaleString() + " pUSDT</br> <small>Reward Allocation: "+formatRewardAllocation(y[17], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("pusdcVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[10])/10**6)).toLocaleString() + " pUSDC</br> <small>Reward Allocation: "+formatRewardAllocation(y[18], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("solidxVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[8])/10**18)).toLocaleString() + " SOLIDX</br> <small>Reward Allocation: "+formatRewardAllocation(y[15], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("pdripVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[11])/10**18)).toLocaleString() + " PDRIP</br> <small>Reward Allocation: "+formatRewardAllocation(y[19], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
 	})
    })
 
