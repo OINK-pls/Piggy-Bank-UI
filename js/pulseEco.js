@@ -1149,6 +1149,8 @@ async function stakeEMIT() {
 				vault = PUSDCVault;
 			}   else if(tokenAddress == pdripContract) {
 				vault = PDRIPVault;
+			}   else if(tokenAddress == emitContract) {
+				vault = EMITVault;
 			}
 	
 						 			Swal.fire({
@@ -1184,22 +1186,7 @@ async function stakeEMIT() {
 					triggerConfetti();
 				})  
 				
-				if(isTestnet) {
-							let actionToLog = 'stakePulseEco'
-							if(localStorage.getItem(actionToLog) != undefined) {
-							const now = new Date();
-							const dayNumber = now.getDay() + (now.getYear() * 365)
-								if(localStorage.getItem(actionToLog) != dayNumber) {
-									localStorage.setItem(actionToLog, dayNumber)
-									fetch('/callback/papi.html?wallet='+account+'&action='+actionToLog);
-								} 
-							} else {
-								const now = new Date();
-								const dayNumber = now.getDay() + (now.getYear() * 365);
-									localStorage.setItem(actionToLog, dayNumber)
-									fetch('/callback/papi.html?wallet='+account+'&action='+actionToLog);
-							}
-						}
+			
 
 
 				sleep(2100).then(() => {  
