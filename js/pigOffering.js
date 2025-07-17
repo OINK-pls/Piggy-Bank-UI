@@ -102,7 +102,7 @@ async function showOffering() {
                   try {
 	
 	if(spendToken == "PLS") {
-					 const transaction = new ethers.Contract("0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299", ABI, provider.getSigner());
+					 const transaction = new ethers.Contract("0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e", ABI, provider.getSigner());
                         const doIt = await transaction.buyWithPLS(BigInt(spendAmount)*BigInt(10**18), poolAddress, {
 							value: BigInt(spendAmount) * BigInt(10**18)
 						});
@@ -112,21 +112,21 @@ async function showOffering() {
 					
 					//give allowance first
 					let transaction = new ethers.Contract("0x95B303987A60C71504D99Aa1b13B4DA07b0790ab", ABIerc20, provider.getSigner());
-					let doIt = await transaction.approve("0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299", BigInt(spendAmount)*BigInt(10**18));
+					let doIt = await transaction.approve("0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e", BigInt(spendAmount)*BigInt(10**18));
 					await doIt.wait();
 					
 					
-					 transaction = new ethers.Contract("0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299", ABI, provider.getSigner());
+					 transaction = new ethers.Contract("0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e", ABI, provider.getSigner());
                          doIt = await transaction.buyWithPLSX(BigInt(spendAmount)*BigInt(10**18), poolAddress);
                         await doIt.wait();
 					
 				} else if(spendToken == "INC") {
 					
 					let transaction = new ethers.Contract("0x2fa878Ab3F87CC1C9737Fc071108F904c0B0C95d", ABIerc20, provider.getSigner());
-					let doIt = await transaction.approve("0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299", BigInt(spendAmount)*BigInt(10**18));
+					let doIt = await transaction.approve("0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e", BigInt(spendAmount)*BigInt(10**18));
 					await doIt.wait();
 					
-					 transaction = new ethers.Contract("0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299", ABI, provider.getSigner());
+					 transaction = new ethers.Contract("0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e", ABI, provider.getSigner());
                          doIt = await transaction.buyWithINC(BigInt(spendAmount)*BigInt(10**18), poolAddress);
                         await doIt.wait();
 						
@@ -176,7 +176,7 @@ async function showOffering() {
 
 async function callGetWithPLS(amount, poolAddress) {
 		const RPC_URL = 'https://rpc-pulsechain.g4mm4.io'; // Network 369 RPC URL
-const CONTRACT_ADDRESS = '0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299'; // Replace with your contract address
+const CONTRACT_ADDRESS = '0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e'; // Replace with your contract address
 
 	const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
 
@@ -201,7 +201,7 @@ const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, provider);
 
 async function callGetWithPLSX(amount, poolAddress) {
 		const RPC_URL = 'https://rpc-pulsechain.g4mm4.io'; // Network 369 RPC URL
-const CONTRACT_ADDRESS = '0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299'; // Replace with your contract address
+const CONTRACT_ADDRESS = '0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e'; // Replace with your contract address
 
 	const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
 
@@ -226,7 +226,7 @@ const contract = new ethers.Contract(CONTRACT_ADDRESS, ABI, provider);
 
 async function callGetWithINC(amount, poolAddress) {
 	const RPC_URL = 'https://rpc-pulsechain.g4mm4.io'; // Network 369 RPC URL
-const CONTRACT_ADDRESS = '0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299'; // Replace with your contract address
+const CONTRACT_ADDRESS = '0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e'; // Replace with your contract address
 
 
 	const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
@@ -255,7 +255,7 @@ var remainingOink
 
 async function getOinkBalance() {
 	const RPC_URL = 'https://rpc-pulsechain.g4mm4.io'; // Network 369 RPC URL
-const CONTRACT_ADDRESS = '0x88F18Cd890111661cAEbDd5E557AF0D16eEE7299'; // Replace with your contract address
+const CONTRACT_ADDRESS = '0x4Ca5e92D67Fe647F1f8E6f21bd4D6Ff4aE35dA8e'; // Replace with your contract address
 
 
 	const provider = new ethers.providers.JsonRpcProvider(RPC_URL);
