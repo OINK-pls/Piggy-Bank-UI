@@ -70,7 +70,7 @@ var fundingFee
     */
 			
 			
-			let total = Number(y[6]) + Number(y[7]) + Number(y[8]) + Number(y[9]) + Number(y[10]) + Number(y[11]) + Number(y[12]) + Number(y[13]) + Number(y[14]) + Number(y[15]) + Number(y[17]) + Number(y[18])
+			let total = Number(y[6]) + Number(y[7]) + Number(y[8]) + Number(y[9]) + Number(y[10]) + Number(y[11]) + Number(y[12]) + Number(y[13]) + Number(y[14]) + Number(y[15]) + Number(y[17]) + Number(y[18]) + Number(y[19]) + Number(y[20]) + Number(y[21]) + Number(y[22]) + Number(y[23])
 		console.log("total is " + total)
 // Helper function to format reward allocation
 function formatRewardAllocation(value, total) {
@@ -91,6 +91,9 @@ document.getElementById("pusdcVaultBalance").innerHTML = "Total Miners:</br>"+(M
 document.getElementById("solidxVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[8])/10**18)).toLocaleString() + " SOLIDX</br> <small>Reward Allocation: "+formatRewardAllocation(y[15], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
 document.getElementById("pdripVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[11])/10**18)).toLocaleString() + " PDRIP</br> <small>Reward Allocation: "+formatRewardAllocation(y[19], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
 //document.getElementById("emitVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[12])/10**18)).toLocaleString() + " EMIT</br> <small>Reward Allocation: "+formatRewardAllocation(y[20], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("communisVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[11])/10**12)).toLocaleString() + " COM</br> <small>Reward Allocation: "+formatRewardAllocation(y[19], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("ptgcVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[11])/10**18)).toLocaleString() + " pTGC</br> <small>Reward Allocation: "+formatRewardAllocation(y[19], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("ufoVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[11])/10**18)).toLocaleString() + " UFO</br> <small>Reward Allocation: "+formatRewardAllocation(y[19], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
 	})
    })
 
