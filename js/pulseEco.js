@@ -90,7 +90,7 @@ document.getElementById("pusdtVaultBalance").innerHTML = "Total Miners:</br>"+(M
 document.getElementById("pusdcVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[10])/10**6)).toLocaleString() + " pUSDC</br> <small>Reward Allocation: "+formatRewardAllocation(y[18], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
 document.getElementById("solidxVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[8])/10**18)).toLocaleString() + " SOLIDX</br> <small>Reward Allocation: "+formatRewardAllocation(y[15], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
 document.getElementById("pdripVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[11])/10**18)).toLocaleString() + " PDRIP</br> <small>Reward Allocation: "+formatRewardAllocation(y[19], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
-document.getElementById("emitVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[12])/10**18)).toLocaleString() + " EMIT</br> <small>Reward Allocation: "+formatRewardAllocation(y[20], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+//document.getElementById("emitVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[12])/10**18)).toLocaleString() + " EMIT</br> <small>Reward Allocation: "+formatRewardAllocation(y[20], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
 	})
    })
 
@@ -113,6 +113,10 @@ var PDRIPVault = "0xc49EF441FFb79108047E4dF812F375A7E48FD3De"
 
 var EMITVault = "0x1aB20028a50477e11bC4066047D8942De1375eF7"
 
+var COMMUNISVault = "0x4441c3bdb96139a45df653ec0432d076631a6d9f"
+var PTGCVault = "0xa620473a3eb138c43e1f7065bda0ded0e039d8fd"
+var UFOVault = "0xce34298e7456fd748e432e02cc4f107ac864c739"
+
 
 var usdcContract = ""
 var plsxContract = "0x95B303987A60C71504D99Aa1b13B4DA07b0790ab"
@@ -130,6 +134,10 @@ var pusdcContract = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
 var pdripContract = "0xeB2CEed77147893Ba8B250c796c2d4EF02a72B68"
 
 var emitContract = "0x32fB5663619A657839A80133994E45c5e5cDf427"
+
+var comContract = "0x5a9780bfe63f3ec57f01b087cd65bd656c9034a8"
+var ptgcContract = "0x94534eeee131840b1c0f61847c572228bdfdde93"
+var ufoContract = "0x456548a9b56efbbd89ca0309edd17a9e20b04018"
 
   async function stakeHEX() {
 	   
@@ -960,6 +968,200 @@ async function stakeEMIT() {
 
    }
    
+   
+      async function stakeCOM() {
+	   
+	   await auth();
+	   let accounts = await provider.send("eth_requestAccounts", []);
+			let account = accounts[0];
+			
+	   				let swalio = Swal.fire({
+				  title: 'Mine using Communis',
+				  html: '<img src="img/com.png" style="max-width: 64px"></br></br><div id="replace"><div class="pixel-loader"></div></div>',
+				 showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'I understand, Start Mining!'
+				})
+				
+				let balance = await checkBalance2(account, comContract);
+				let raw = BigInt(balance[0])
+				balance = balance[1]/100
+				balance = (Number(raw)/Number(10**12))
+				
+				if(balance == 0) {
+					Swal.fire({
+				  title: 'Mine using Communis tokens',
+				  html: '<img src="img/com.png" style="max-width: 64px"></br></br> You have no Communis tokens in your wallet. Swap on PulseX or choose another token!',
+				 showCancelButton: true,
+			showConfirmButton: false
+				})
+
+				} else {
+				document.getElementById("replace").innerHTML = 'Your Balance:<strong> <div id="userBalance" style="display: inline;">'+balance+'</div> Communis</strong></br></br></br>To Stake:  <strong><span id="client2">'+balance+'</span> Communis</strong></label><center><input type="range" class="form-control-range" id="formControlRange2" style="max-width:300px;" value="100"></center></br></br>Deposit Fee: '+(depositFee/100)+'%</br>Mining Fee: '+(fundingFee/10000)+'% <small>(hourly)</small></br></br><strong>Your Principal Can be withdrawn at any time.</strong></br></br>Through governance process fees can be turned on and adjusted. Deposit fee is charged only once - upon mining start. Mining Fee is charged perpetually every hour and the fees are deducted from your principal. ';
+									
+			  var delayBE = balance;
+		  
+			const range2 = document.getElementById('formControlRange2');
+			const client2 = document.getElementById('client2');
+
+			range2.addEventListener('change', (d) => {
+			  const clientValue2 = d.target.value;
+			  client2.textContent = (clientValue2 / 100 * delayBE);
+			});
+			
+			
+			swalio.then(async(result) => {
+		  if (result.isConfirmed) {
+			 			Swal.fire({
+				  title: '<strong>Allowance</strong>',
+				  html: '<div id="allowanceCheck"> Checking Allowance....<div class="pixel-loader"></div></div>',
+				  showCancelButton: false,
+				  showConfirmButton: false
+				})
+				
+				let allowance = await checkAllowance(comContract, account, COMMUNISVault);
+				
+				if(allowance >= (raw * BigInt(range2.value) / BigInt(100))) {
+					finalizeStake(comContract, (raw * BigInt(range2.value) / BigInt(100)));
+				} else {
+					document.getElementById("allowanceCheck").innerHTML = 'To proceed you must give allowance in wallet: </br><button class="swal2-confirm swal2-styled" style="display: inline-block;" onclick="giveAllowance(\''+comContract+'\', \''+COMMUNISVault+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\')"> Allow '+client2.textContent+' Communis</button> <button class="swal2-confirm swal2-styled" style="display: inline-block;" onclick="giveAllowance(\''+comContract+'\', \''+COMMUNISVault+'\', \''+ethers.constants.MaxUint256+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\')""> Give Infinite Allowance</button>';
+				}
+				}})
+				
+				}
+
+   }
+   
+   
+      async function stakePTGC() {
+	   
+	   await auth();
+	   let accounts = await provider.send("eth_requestAccounts", []);
+			let account = accounts[0];
+			
+	   				let swalio = Swal.fire({
+				  title: 'Mine using Communis',
+				  html: '<img src="img/ptgc.png" style="max-width: 64px"></br></br><div id="replace"><div class="pixel-loader"></div></div>',
+				 showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'I understand, Start Mining!'
+				})
+				
+				let balance = await checkBalance2(account, ptgcContract);
+				let raw = BigInt(balance[0])
+				balance = balance[1]/100
+				balance = (Number(raw)/Number(10**18))
+				
+				if(balance == 0) {
+					Swal.fire({
+				  title: 'Mine using Communis tokens',
+				  html: '<img src="img/ptgc.png" style="max-width: 64px"></br></br> You have no Communis tokens in your wallet. Swap on PulseX or choose another token!',
+				 showCancelButton: true,
+			showConfirmButton: false
+				})
+
+				} else {
+				document.getElementById("replace").innerHTML = 'Your Balance:<strong> <div id="userBalance" style="display: inline;">'+balance+'</div> Communis</strong></br></br></br>To Stake:  <strong><span id="client2">'+balance+'</span> Communis</strong></label><center><input type="range" class="form-control-range" id="formControlRange2" style="max-width:300px;" value="100"></center></br></br>Deposit Fee: '+(depositFee/100)+'%</br>Mining Fee: '+(fundingFee/10000)+'% <small>(hourly)</small></br></br><strong>Your Principal Can be withdrawn at any time.</strong></br></br>Through governance process fees can be turned on and adjusted. Deposit fee is charged only once - upon mining start. Mining Fee is charged perpetually every hour and the fees are deducted from your principal. ';
+									
+			  var delayBE = balance;
+		  
+			const range2 = document.getElementById('formControlRange2');
+			const client2 = document.getElementById('client2');
+
+			range2.addEventListener('change', (d) => {
+			  const clientValue2 = d.target.value;
+			  client2.textContent = (clientValue2 / 100 * delayBE);
+			});
+			
+			
+			swalio.then(async(result) => {
+		  if (result.isConfirmed) {
+			 			Swal.fire({
+				  title: '<strong>Allowance</strong>',
+				  html: '<div id="allowanceCheck"> Checking Allowance....<div class="pixel-loader"></div></div>',
+				  showCancelButton: false,
+				  showConfirmButton: false
+				})
+				
+				let allowance = await checkAllowance(ptgcContract, account, PTGCVault);
+				
+				if(allowance >= (raw * BigInt(range2.value) / BigInt(100))) {
+					finalizeStake(ptgcContract, (raw * BigInt(range2.value) / BigInt(100)));
+				} else {
+					document.getElementById("allowanceCheck").innerHTML = 'To proceed you must give allowance in wallet: </br><button class="swal2-confirm swal2-styled" style="display: inline-block;" onclick="giveAllowance(\''+ptgcContract+'\', \''+PTGCVault+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\')"> Allow '+client2.textContent+' Communis</button> <button class="swal2-confirm swal2-styled" style="display: inline-block;" onclick="giveAllowance(\''+ptgcContract+'\', \''+PTGCVault+'\', \''+ethers.constants.MaxUint256+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\')""> Give Infinite Allowance</button>';
+				}
+				}})
+				
+				}
+
+   }
+   
+      async function stakeUFO() {
+	   
+	   await auth();
+	   let accounts = await provider.send("eth_requestAccounts", []);
+			let account = accounts[0];
+			
+	   				let swalio = Swal.fire({
+				  title: 'Mine using UFO',
+				  html: '<img src="img/ufo.png" style="max-width: 64px"></br></br><div id="replace"><div class="pixel-loader"></div></div>',
+				 showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'I understand, Start Mining!'
+				})
+				
+				let balance = await checkBalance2(account, ufoContract);
+				let raw = BigInt(balance[0])
+				balance = balance[1]/100
+				balance = (Number(raw)/Number(10**18))
+				
+				if(balance == 0) {
+					Swal.fire({
+				  title: 'Mine using UFO tokens',
+				  html: '<img src="img/ufo.png" style="max-width: 64px"></br></br> You have no UFO tokens in your wallet. Swap on PulseX or choose another token!',
+				 showCancelButton: true,
+			showConfirmButton: false
+				})
+
+				} else {
+				document.getElementById("replace").innerHTML = 'Your Balance:<strong> <div id="userBalance" style="display: inline;">'+balance+'</div> UFO</strong></br></br></br>To Stake:  <strong><span id="client2">'+balance+'</span> UFO</strong></label><center><input type="range" class="form-control-range" id="formControlRange2" style="max-width:300px;" value="100"></center></br></br>Deposit Fee: '+(depositFee/100)+'%</br>Mining Fee: '+(fundingFee/10000)+'% <small>(hourly)</small></br></br><strong>Your Principal Can be withdrawn at any time.</strong></br></br>Through governance process fees can be turned on and adjusted. Deposit fee is charged only once - upon mining start. Mining Fee is charged perpetually every hour and the fees are deducted from your principal. ';
+									
+			  var delayBE = balance;
+		  
+			const range2 = document.getElementById('formControlRange2');
+			const client2 = document.getElementById('client2');
+
+			range2.addEventListener('change', (d) => {
+			  const clientValue2 = d.target.value;
+			  client2.textContent = (clientValue2 / 100 * delayBE);
+			});
+			
+			
+			swalio.then(async(result) => {
+		  if (result.isConfirmed) {
+			 			Swal.fire({
+				  title: '<strong>Allowance</strong>',
+				  html: '<div id="allowanceCheck"> Checking Allowance....<div class="pixel-loader"></div></div>',
+				  showCancelButton: false,
+				  showConfirmButton: false
+				})
+				
+				let allowance = await checkAllowance(ufoContract, account, UFOVault);
+				
+				if(allowance >= (raw * BigInt(range2.value) / BigInt(100))) {
+					finalizeStake(ufoContract, (raw * BigInt(range2.value) / BigInt(100)));
+				} else {
+					document.getElementById("allowanceCheck").innerHTML = 'To proceed you must give allowance in wallet: </br><button class="swal2-confirm swal2-styled" style="display: inline-block;" onclick="giveAllowance(\''+ufoContract+'\', \''+UFOVault+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\')"> Allow '+client2.textContent+' UFO</button> <button class="swal2-confirm swal2-styled" style="display: inline-block;" onclick="giveAllowance(\''+ufoContract+'\', \''+UFOVault+'\', \''+ethers.constants.MaxUint256+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\')""> Give Infinite Allowance</button>';
+				}
+				}})
+				
+				}
+
+   }
+   
    async function stakeHEXstake() {
 	    await auth();
 	   let accounts = await provider.send("eth_requestAccounts", []);
@@ -1152,6 +1354,12 @@ async function stakeEMIT() {
 				vault = PDRIPVault;
 			}   else if(tokenAddress == emitContract) {
 				vault = EMITVault;
+			}   else if(tokenAddress == comContract) {
+				vault = COMMUNISVault;
+			}   else if(tokenAddress == ptgcContract) {
+				vault = PTGCVault;
+			}   else if(tokenAddress == ufoContract) {
+				vault = UFOVault;
 			}
 	
 						 			Swal.fire({
@@ -1300,3 +1508,4 @@ function voteAllocations() {
 				})
 }
 	 
+
