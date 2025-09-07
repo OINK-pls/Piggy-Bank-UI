@@ -1044,7 +1044,7 @@ async function stakeEMIT() {
 			let account = accounts[0];
 			
 	   				let swalio = Swal.fire({
-				  title: 'Mine using Communis',
+				  title: 'Mine using pTGC',
 				  html: '<img src="img/ptgc.png" style="max-width: 64px"></br></br><div id="replace"><div class="pixel-loader"></div></div>',
 				 showCancelButton: true,
 			confirmButtonColor: '#3085d6',
@@ -1059,7 +1059,7 @@ async function stakeEMIT() {
 				
 				if(balance == 0) {
 					Swal.fire({
-				  title: 'Mine using Communis tokens',
+				  title: 'Mine using pTGC tokens',
 				  html: '<img src="img/ptgc.png" style="max-width: 64px"></br></br> You have no Communis tokens in your wallet. Swap on PulseX or choose another token!',
 				 showCancelButton: true,
 			showConfirmButton: false
