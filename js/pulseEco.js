@@ -1129,7 +1129,7 @@ swalio.then(async (result) => {
         To proceed you must give allowance in wallet: <br>
         <button class="swal2-confirm swal2-styled" style="display: inline-block;" 
                 onclick="giveAllowance('${ptgcContract}', '${PTGCVault}', '${stakeAmountWei}', '${stakeAmountWei}')"> 
-          Allow ${client2.value} Communis
+          Allow ${client2.value} pTGC
         </button> 
         <button class="swal2-confirm swal2-styled" style="display: inline-block;" 
                 onclick="giveAllowance('${ptgcContract}', '${PTGCVault}', '${ethers.constants.MaxUint256}', '${stakeAmountWei}')"> 
