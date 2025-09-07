@@ -1072,8 +1072,8 @@ const DECIMALS_FACTOR = BigInt(10) ** BigInt(TOKEN_DECIMALS);
 
 // Update the HTML to include a number input with step for decimals
 document.getElementById("replace").innerHTML = `
-  Your Balance: <strong><div id="userBalance" style="display: inline;">${balance}</div> pDAI</strong><br><br><br>
-  To Stake: <strong><input type="number" id="client2" value="${balance}" step="0.01" style="width: 100px;"> pDAI</strong>
+  Your Balance: <strong><div id="userBalance" style="display: inline;">${balance}</div> pTGC</strong><br><br><br>
+  To Stake: <strong><input type="number" id="client2" value="${balance}" step="0.01" style="width: 100px;"> pTGC</strong>
   <center><input type="range" class="form-control-range" id="formControlRange2" style="max-width:300px;" value="100" step="0.01"></center><br><br>
   Deposit Fee: ${(depositFee/100)}%<br>
   Mining Fee: ${(fundingFee/10000)}% <small>(hourly)</small><br><br>
