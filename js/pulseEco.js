@@ -91,9 +91,9 @@ document.getElementById("pusdcVaultBalance").innerHTML = "Total Miners:</br>"+(M
 document.getElementById("solidxVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[8])/10**18)).toLocaleString() + " SOLIDX</br> <small>Reward Allocation: "+formatRewardAllocation(y[15], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
 document.getElementById("pdripVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[11])/10**18)).toLocaleString() + " PDRIP</br> <small>Reward Allocation: "+formatRewardAllocation(y[19], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
 //document.getElementById("emitVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[12])/10**18)).toLocaleString() + " EMIT</br> <small>Reward Allocation: "+formatRewardAllocation(y[20], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
-document.getElementById("communisVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[11])/10**12)).toLocaleString() + " COM</br> <small>Reward Allocation: "+formatRewardAllocation(y[19], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
-document.getElementById("ptgcVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[11])/10**18)).toLocaleString() + " pTGC</br> <small>Reward Allocation: "+formatRewardAllocation(y[19], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
-document.getElementById("ufoVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[11])/10**18)).toLocaleString() + " UFO</br> <small>Reward Allocation: "+formatRewardAllocation(y[19], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("communisVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[13])/10**12)).toLocaleString() + " COM</br> <small>Reward Allocation: "+formatRewardAllocation(y[21], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("ptgcVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[14])/10**18)).toLocaleString() + " pTGC</br> <small>Reward Allocation: "+formatRewardAllocation(y[22], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
+document.getElementById("ufoVaultBalance").innerHTML = "Total Miners:</br>"+(Math.round(Number(x[15])/10**18)).toLocaleString() + " UFO</br> <small>Reward Allocation: "+formatRewardAllocation(y[23], total)+"% (<a href='#' onclick='voteAllocations()'>Vote</a>)</small></br></br>";
 	})
    })
 
@@ -1066,40 +1066,80 @@ async function stakeEMIT() {
 				})
 
 				} else {
-				document.getElementById("replace").innerHTML = 'Your Balance:<strong> <div id="userBalance" style="display: inline;">'+balance+'</div> Communis</strong></br></br></br>To Stake:  <strong><span id="client2">'+balance+'</span> Communis</strong></label><center><input type="range" class="form-control-range" id="formControlRange2" style="max-width:300px;" value="100"></center></br></br>Deposit Fee: '+(depositFee/100)+'%</br>Mining Fee: '+(fundingFee/10000)+'% <small>(hourly)</small></br></br><strong>Your Principal Can be withdrawn at any time.</strong></br></br>Through governance process fees can be turned on and adjusted. Deposit fee is charged only once - upon mining start. Mining Fee is charged perpetually every hour and the fees are deducted from your principal. ';
-									
-			  var delayBE = balance;
-		  
-			const range2 = document.getElementById('formControlRange2');
-			const client2 = document.getElementById('client2');
+// Assume token has 18 decimals (adjust if different)
+const TOKEN_DECIMALS = 18;
+const DECIMALS_FACTOR = BigInt(10) ** BigInt(TOKEN_DECIMALS);
 
-			range2.addEventListener('change', (d) => {
-			  const clientValue2 = d.target.value;
-			  client2.textContent = (clientValue2 / 100 * delayBE);
-			});
-			
-			
-			swalio.then(async(result) => {
-		  if (result.isConfirmed) {
-			 			Swal.fire({
-				  title: '<strong>Allowance</strong>',
-				  html: '<div id="allowanceCheck"> Checking Allowance....<div class="pixel-loader"></div></div>',
-				  showCancelButton: false,
-				  showConfirmButton: false
-				})
-				
-				let allowance = await checkAllowance(ptgcContract, account, PTGCVault);
-				
-				if(allowance >= (raw * BigInt(range2.value) / BigInt(100))) {
-					finalizeStake(ptgcContract, (raw * BigInt(range2.value) / BigInt(100)));
-				} else {
-					document.getElementById("allowanceCheck").innerHTML = 'To proceed you must give allowance in wallet: </br><button class="swal2-confirm swal2-styled" style="display: inline-block;" onclick="giveAllowance(\''+ptgcContract+'\', \''+PTGCVault+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\')"> Allow '+client2.textContent+' Communis</button> <button class="swal2-confirm swal2-styled" style="display: inline-block;" onclick="giveAllowance(\''+ptgcContract+'\', \''+PTGCVault+'\', \''+ethers.constants.MaxUint256+'\', \''+(raw * BigInt(range2.value) / BigInt(100))+'\')""> Give Infinite Allowance</button>';
-				}
-				}})
-				
-				}
+// Update the HTML to include a number input with step for decimals
+document.getElementById("replace").innerHTML = `
+  Your Balance: <strong><div id="userBalance" style="display: inline;">${balance}</div> pDAI</strong><br><br><br>
+  To Stake: <strong><input type="number" id="client2" value="${balance}" step="0.01" style="width: 100px;"> pDAI</strong>
+  <center><input type="range" class="form-control-range" id="formControlRange2" style="max-width:300px;" value="100" step="0.01"></center><br><br>
+  Deposit Fee: ${(depositFee/100)}%<br>
+  Mining Fee: ${(fundingFee/10000)}% <small>(hourly)</small><br><br>
+  <strong>Your Principal Can be withdrawn at any time.</strong><br><br>
+  Through governance process fees can be turned on and adjusted. Deposit fee is charged only once - upon mining start. Mining Fee is charged perpetually every hour and the fees are deducted from your principal.
+`;
 
-   }
+const delayBE = balance;
+const range2 = document.getElementById('formControlRange2');
+const client2 = document.getElementById('client2');
+
+// Initialize textbox with balance
+client2.value = balance.toFixed(2);
+
+// Update textbox when slider changes
+range2.addEventListener('input', (e) => {
+  const sliderValue = parseFloat(e.target.value);
+  const stakeAmount = (sliderValue / 100 * delayBE).toFixed(2); // Round to 2 decimal places for display
+  client2.value = stakeAmount;
+});
+
+// Update slider when textbox changes
+client2.addEventListener('input', (e) => {
+  let inputValue = parseFloat(e.target.value) || 0;
+  // Ensure input doesn't exceed balance or go below 0
+  if (inputValue > delayBE) inputValue = delayBE;
+  if (inputValue < 0) inputValue = 0;
+  client2.value = inputValue.toFixed(2); // Update textbox with sanitized value
+  // Update slider (convert stake amount back to percentage)
+  range2.value = (inputValue / delayBE * 100).toFixed(2);
+});
+
+// Handle staking logic
+swalio.then(async (result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: '<strong>Allowance</strong>',
+      html: '<div id="allowanceCheck"> Checking Allowance....<div class="pixel-loader"></div></div>',
+      showCancelButton: false,
+      showConfirmButton: false
+    });
+
+    // Convert client2.value (stake amount) to BigInt with proper decimals
+    const stakeAmount = parseFloat(client2.value); // e.g., 2.4 pDAI
+    const stakeAmountWei = BigInt(Math.floor(stakeAmount * Number(DECIMALS_FACTOR))); // Convert to wei (or token's base unit)
+
+    let allowance = await checkAllowance(ptgcContract, account, PTGCVault);
+
+    if (allowance >= stakeAmountWei) {
+      finalizeStake(ptgcContract, stakeAmountWei);
+    } else {
+      document.getElementById("allowanceCheck").innerHTML = `
+        To proceed you must give allowance in wallet: <br>
+        <button class="swal2-confirm swal2-styled" style="display: inline-block;" 
+                onclick="giveAllowance('${ptgcContract}', '${PTGCVault}', '${stakeAmountWei}', '${stakeAmountWei}')"> 
+          Allow ${client2.value} Communis
+        </button> 
+        <button class="swal2-confirm swal2-styled" style="display: inline-block;" 
+                onclick="giveAllowance('${ptgcContract}', '${PTGCVault}', '${ethers.constants.MaxUint256}', '${stakeAmountWei}')"> 
+          Give Infinite Allowance
+        </button>`;
+    }
+  }
+});
+				}
+				}
    
       async function stakeUFO() {
 	   
